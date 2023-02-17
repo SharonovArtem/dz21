@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
+using static System.Net.WebRequestMethods;
+
+namespace jun1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int valuesNumber = 30;
+            int[] array = new int[valuesNumber];
+            int arrayFirstValue = 0;
+            int arrayLastValue = 29;
+            Random random = new Random();
+            int checkNumber = 1;
+            int randomMinimalNumber = 0;
+            int randomMaximalNumber = 50;
+            int arrayValues;
+            string localMaximalNumber = "Локальные максимумы: ";
+
+            Console.WriteLine("числа: ");
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                arrayValues = random.Next(randomMinimalNumber, randomMaximalNumber);
+                array[i] = arrayValues;
+                Console.Write(array[i] + " ");
+            }
+
+            Console.WriteLine("\n\n" + localMaximalNumber);
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i - checkNumber != arrayFirstValue - checkNumber && i + checkNumber != arrayLastValue + checkNumber)
+                {
+                    if (array[i + checkNumber] < array[i] && array[i - checkNumber] < array[i])
+                    {
+                        Console.Write(array[i] + " ");
+                    }
+                }
+                else if(i - checkNumber == arrayFirstValue - checkNumber && i + checkNumber != arrayLastValue + checkNumber)
+                {
+                    if (array[i + checkNumber] < array[i])
+                    {
+                        Console.Write(array[i] + " ");
+                    }
+                }
+                else if (i + checkNumber == arrayLastValue + checkNumber && i - checkNumber != arrayFirstValue - checkNumber)
+                {
+                    if (array[i - checkNumber] < array[i])
+                    {
+                        Console.Write(array[i] + " ");
+                    }
+                }
+            }
+        }
+    }
+}
