@@ -17,6 +17,8 @@ namespace jun1
             int[] numbers = new int[arrayLenght];
             int arrayFirstValue = 0;
             int arrayLastValue = 29;
+            int wrongCheckLowNumber = -1;
+            int wrongCheckHighNumber = 30;
             Random random = new Random();
             int checkNumber = 1;
             int randomMinimalNumber = 0;
@@ -35,22 +37,22 @@ namespace jun1
 
             Console.WriteLine("\n\n" + localMaximalNumber);
 
-            if (numbers[arrayFirstValue + checkNumber] < numbers[arrayFirstValue + checkNumber])
+            if (numbers[arrayFirstValue + checkNumber] < numbers[arrayFirstValue])
             {
                 Console.Write(numbers[arrayFirstValue] + " ");
             }
 
             for (int i = 0; i < numbers.Length; i++)
             {
-                if (i - checkNumber != arrayFirstValue - checkNumber && i + checkNumber != arrayLastValue + checkNumber)
+                if (i - checkNumber != wrongCheckLowNumber && i + checkNumber != wrongCheckHighNumber)
                 {
                     if (numbers[i + checkNumber] < numbers[i] && numbers[i - checkNumber] < numbers[i])
                     {
                         Console.Write(numbers[i] + " ");
                     }
-                }    
+                }
             }
-            
+
             if (numbers[arrayLastValue - checkNumber] < numbers[arrayLastValue])
             {
                 Console.Write(numbers[arrayLastValue] + "\n");
