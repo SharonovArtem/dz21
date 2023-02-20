@@ -13,12 +13,10 @@ namespace jun1
     {
         static void Main(string[] args)
         {
-            int valuesNumber = 30;
-            int[] array = new int[valuesNumber];
+            int arrayLenght = 30;
+            int[] numbers = new int[arrayLenght];
             int arrayFirstValue = 0;
             int arrayLastValue = 29;
-            int wrongCheckLowNumber = -1;
-            int wrongCheckHighNumber = 30;
             Random random = new Random();
             int checkNumber = 1;
             int randomMinimalNumber = 0;
@@ -28,34 +26,34 @@ namespace jun1
 
             Console.WriteLine("числа: ");
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
                 arrayValues = random.Next(randomMinimalNumber, randomMaximalNumber);
-                array[i] = arrayValues;
-                Console.Write(array[i] + " ");
+                numbers[i] = arrayValues;
+                Console.Write(numbers[i] + " ");
             }
 
             Console.WriteLine("\n\n" + localMaximalNumber);
 
-            if (array[arrayFirstValue + checkNumber] < array[arrayFirstValue + checkNumber])
+            if (numbers[arrayFirstValue + checkNumber] < numbers[arrayFirstValue + checkNumber])
             {
-                Console.Write(array[arrayFirstValue] + " ");
+                Console.Write(numbers[arrayFirstValue] + " ");
             }
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
                 if (i - checkNumber != arrayFirstValue - checkNumber && i + checkNumber != arrayLastValue + checkNumber)
                 {
-                    if (array[i + checkNumber] < array[i] && array[i - checkNumber] < array[i])
+                    if (numbers[i + checkNumber] < numbers[i] && numbers[i - checkNumber] < numbers[i])
                     {
-                        Console.Write(array[i] + " ");
+                        Console.Write(numbers[i] + " ");
                     }
                 }    
             }
             
-            if (array[arrayLastValue - checkNumber] < array[arrayLastValue])
+            if (numbers[arrayLastValue - checkNumber] < numbers[arrayLastValue])
             {
-                Console.Write(array[arrayLastValue] + "\n");
+                Console.Write(numbers[arrayLastValue] + "\n");
             }
         }
     }
